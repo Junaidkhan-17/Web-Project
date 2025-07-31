@@ -1,0 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+header {
+  background-color: #4a6fa5;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.input-section {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.todo-input, .edit-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.todo-input:focus, .edit-input:focus {
+  border-color: #4a6fa5;
+  box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+}
+
+.add-btn, .save-btn, .cancel-btn {
+  padding: 12px 20px;
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover, .save-btn:hover {
+  background-color: #3a5a80;
+}
+
+.cancel-btn {
+  background-color: #e74c3c;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b;
+}
+
+.edit-mode {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.edit-input {
+  flex: 1;
+}
+
+.filter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.filter-buttons button {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.filter-buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+.filter-buttons button.active {
+  background-color: #4a6fa5;
+  color: white;
+  border-color: #4a6fa5;
+}
+
+.clear-completed {
+  padding: 8px 15px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.clear-completed:hover {
+  background-color: #c0392b;
+}
+
+.todos {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 0 20px;
+}
+
+.todos ul {
+  list-style-type: none;
+}
+
+.todos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  animation: fadeIn 0.3s ease;
+}
+
+.todos li:last-child {
+  border-bottom: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todos li.completed .todo-text {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.checkbox {
+  margin-right: 15px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.todo-text:hover {
+  color: #4a6fa5;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 10px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.todos li:hover .todo-actions {
+  opacity: 1;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  transform: scale(1.2);
+}
+
+.no-todos {
+  text-align: center;
+  color: #888;
+  padding: 40px 0;
+  font-style: italic;
+}
+
+.footer {
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  border-top: 1px solid #eee;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .container {
+    margin: 10px;
+    border-radius: 8px;
+  }
+  
+  .input-section, .edit-mode {
+    flex-direction: column;
+  }
+  
+  .add-btn, .save-btn, .cancel-btn {
+    width: 100%;
+  }
+  
+  .filter-section {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .clear-completed {
+    align-self: flex-end;
+  }
+}
